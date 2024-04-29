@@ -28,7 +28,7 @@ const Ratio = () => {
   //EMISSIONS
   useEffect(() => {
     axios
-      .get(`https://gentle-wave-72526.herokuapp.com/emissions/${id}`)
+      .get(`https://quiet-gorge-03165-6c773fd38803.herokuapp.com/emissions/${id}`)
       .then((res) => {
         setWind(res.data.emissions_Wind);
       });
@@ -36,7 +36,7 @@ const Ratio = () => {
 
   useEffect(() => {
     axios
-      .get(`https://gentle-wave-72526.herokuapp.com/emissions/${id}`)
+      .get(`https://quiet-gorge-03165-6c773fd38803.herokuapp.com/emissions/${id}`)
       .then((res) => {
         setSolar(res.data.emissions_Solar);
       });
@@ -44,7 +44,7 @@ const Ratio = () => {
 
   useEffect(() => {
     axios
-      .get(`https://gentle-wave-72526.herokuapp.com/emissions/${id}`)
+      .get(`https://quiet-gorge-03165-6c773fd38803.herokuapp.com/emissions/${id}`)
       .then((res) => {
         setBiomass(res.data.emissions_Bioenergy);
       });
@@ -52,7 +52,7 @@ const Ratio = () => {
 
   useEffect(() => {
     axios
-      .get(`https://gentle-wave-72526.herokuapp.com/emissions/${id}`)
+      .get(`https://quiet-gorge-03165-6c773fd38803.herokuapp.com/emissions/${id}`)
       .then((res) => {
         setHydro(res.data.emissions_Hydro);
       });
@@ -60,7 +60,7 @@ const Ratio = () => {
 
   useEffect(() => {
     axios
-      .get(`https://gentle-wave-72526.herokuapp.com/emissions/${id}`)
+      .get(`https://quiet-gorge-03165-6c773fd38803.herokuapp.com/emissions/${id}`)
       .then((res) => {
         setRenew(res.data.emissions_OtherRenewables);
       });
@@ -68,7 +68,7 @@ const Ratio = () => {
 
   useEffect(() => {
     axios
-      .get(`https://gentle-wave-72526.herokuapp.com/emissions/${id}`)
+      .get(`https://quiet-gorge-03165-6c773fd38803.herokuapp.com/emissions/${id}`)
       .then((res) => {
         setNuclear(res.data.emissions_Nuclear);
       });
@@ -76,7 +76,7 @@ const Ratio = () => {
 
   useEffect(() => {
     axios
-      .get(`https://gentle-wave-72526.herokuapp.com/emissions/${id}`)
+      .get(`https://quiet-gorge-03165-6c773fd38803.herokuapp.com/emissions/${id}`)
       .then((res) => {
         setFossil(res.data.emissions_OtherFossil);
       });
@@ -84,7 +84,7 @@ const Ratio = () => {
 
   useEffect(() => {
     axios
-      .get(`https://gentle-wave-72526.herokuapp.com/emissions/${id}`)
+      .get(`https://quiet-gorge-03165-6c773fd38803.herokuapp.com/emissions/${id}`)
       .then((res) => {
         setGas(res.data.emissions_Gas);
       });
@@ -92,7 +92,7 @@ const Ratio = () => {
 
   useEffect(() => {
     axios
-      .get(`https://gentle-wave-72526.herokuapp.com/emissions/${id}`)
+      .get(`https://quiet-gorge-03165-6c773fd38803.herokuapp.com/emissions/${id}`)
       .then((res) => {
         setCoal(res.data.emissions_Coal);
       });
@@ -102,7 +102,7 @@ const Ratio = () => {
 
   useEffect(() => {
     axios
-      .get(`https://gentle-wave-72526.herokuapp.com/emissions/${id}`)
+      .get(`https://quiet-gorge-03165-6c773fd38803.herokuapp.com/emissions/${id}`)
       .then((res) => {
         setWindGen(res.data.generation_Wind);
       });
@@ -110,7 +110,7 @@ const Ratio = () => {
 
   useEffect(() => {
     axios
-      .get(`https://gentle-wave-72526.herokuapp.com/emissions/${id}`)
+      .get(`https://quiet-gorge-03165-6c773fd38803.herokuapp.com/emissions/${id}`)
       .then((res) => {
         setSolarGen(res.data.generation_Solar);
       });
@@ -118,7 +118,7 @@ const Ratio = () => {
 
   useEffect(() => {
     axios
-      .get(`https://gentle-wave-72526.herokuapp.com/emissions/${id}`)
+      .get(`https://quiet-gorge-03165-6c773fd38803.herokuapp.com/emissions/${id}`)
       .then((res) => {
         setBioenergyGen(res.data.generation_Bioenergy);
       });
@@ -126,7 +126,7 @@ const Ratio = () => {
 
   useEffect(() => {
     axios
-      .get(`https://gentle-wave-72526.herokuapp.com/emissions/${id}`)
+      .get(`https://quiet-gorge-03165-6c773fd38803.herokuapp.com/emissions/${id}`)
       .then((res) => {
         setHydroGen(res.data.generation_Hydro);
       });
@@ -134,7 +134,7 @@ const Ratio = () => {
 
   useEffect(() => {
     axios
-      .get(`https://gentle-wave-72526.herokuapp.com/emissions/${id}`)
+      .get(`https://quiet-gorge-03165-6c773fd38803.herokuapp.com/emissions/${id}`)
       .then((res) => {
         setOtherRenewablesGen(res.data.generation_OtherRenewables);
       });
@@ -142,7 +142,7 @@ const Ratio = () => {
 
   useEffect(() => {
     axios
-      .get(`https://gentle-wave-72526.herokuapp.com/emissions/${id}`)
+      .get(`https://quiet-gorge-03165-6c773fd38803.herokuapp.com/emissions/${id}`)
       .then((res) => {
         setNuclearGen(res.data.generation_Nuclear);
       });
@@ -150,7 +150,7 @@ const Ratio = () => {
 
   useEffect(() => {
     axios
-      .get(`https://gentle-wave-72526.herokuapp.com/emissions/${id}`)
+      .get(`https://quiet-gorge-03165-6c773fd38803.herokuapp.com/emissions/${id}`)
       .then((res) => {
         setOtherFossilGen(res.data.generation_OtherFossil);
       });
@@ -158,7 +158,7 @@ const Ratio = () => {
 
   useEffect(() => {
     axios
-      .get(`https://gentle-wave-72526.herokuapp.com/emissions/${id}`)
+      .get(`https://quiet-gorge-03165-6c773fd38803.herokuapp.com/emissions/${id}`)
       .then((res) => {
         setGasGen(res.data.generation_Gas);
       });
@@ -166,7 +166,7 @@ const Ratio = () => {
 
   useEffect(() => {
     axios
-      .get(`https://gentle-wave-72526.herokuapp.com/emissions/${id}`)
+      .get(`https://quiet-gorge-03165-6c773fd38803.herokuapp.com/emissions/${id}`)
       .then((res) => {
         setCoalGen(res.data.generation_Coal);
       });
@@ -229,6 +229,8 @@ const Ratio = () => {
   let gasRatio = (twentyDecimal / twoDecimal).toFixed(2);
 
   let coalRatio = (twentyoneDecimal / fourDecimal).toFixed(2);
+
+console.log(coalRatio)
 
   return (
     <div>

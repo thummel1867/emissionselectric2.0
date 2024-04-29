@@ -27,7 +27,7 @@ const Generation = () => {
 
   useEffect(() => {
     axios
-      .get(`hhttps://quiet-gorge-03165-6c773fd38803.herokuapp.com/emissions/${id}`)
+      .get(`https://quiet-gorge-03165-6c773fd38803.herokuapp.com/emissions/${id}`)
       .then((res) => {
         setSolar(res.data.generation_Solar);
       });
