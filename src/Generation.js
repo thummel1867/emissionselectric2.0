@@ -168,7 +168,7 @@ const Generation = () => {
               </div>
             ) : (
               <p className="eList">
-                There is no emissions data Solar in {name}
+                There is no emissions data on Solar in {name}
               </p>
             )}
           </div>

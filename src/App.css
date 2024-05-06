@@ -64,7 +64,7 @@ html {
   border-width: 0.1em;
   width: 40vw;
   margin: auto;
-  background-color: rgba(46, 152, 171, 0.38);
+  background-color:rgba(46, 152, 171, 0.742);
   margin-bottom: 5vh;
 }
 
@@ -103,7 +103,7 @@ html {
     font-size: 35px;
     text-align: center;
     margin: 0px;
-    background-color:rgba(46, 152, 171, 0.38);
+    background-color:rgba(46, 152, 171, 0.742);
     border-style: solid;
     width: 90vw;
     margin: auto;
