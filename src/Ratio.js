@@ -291,7 +291,7 @@ console.log(coalRatio)
                 </div>
               </div>
             ) : (
-              <p className="eList">No data Solar in {name}</p>
+              <p className="eList">No data on Solar in {name}</p>
             )}
           </div>
         </div>
