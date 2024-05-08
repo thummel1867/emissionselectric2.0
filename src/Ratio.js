@@ -5,212 +5,81 @@ import axios from "axios";
 
 const Ratio = () => {
   const { id, name } = useParams();
-  const [gas, setGas] = useState();
-  const [biomass, setBiomass] = useState();
-  const [coal, setCoal] = useState();
-  const [hydro, setHydro] = useState();
-  const [nuclear, setNuclear] = useState();
-  const [solar, setSolar] = useState();
-  const [wind, setWind] = useState();
-  const [renew, setRenew] = useState();
-  const [fossil, setFossil] = useState();
-  //generaion
-  const [gas2, setGasGen] = useState();
-  const [biomass2, setBioenergyGen] = useState();
-  const [coal2, setCoalGen] = useState();
-  const [hydro2, setHydroGen] = useState();
-  const [nuclear2, setNuclearGen] = useState();
-  const [solar2, setSolarGen] = useState();
-  const [wind2, setWindGen] = useState();
-  const [renew2, setOtherRenewablesGen] = useState();
-  const [fossil2, setOtherFossilGen] = useState();
-
-  //EMISSIONS
-  useEffect(() => {
-    axios
-      .get(`https://quiet-gorge-03165-6c773fd38803.herokuapp.com/emissions/${id}`)
-      .then((res) => {
-        setWind(res.data.emissions_Wind);
-      });
-  }, []);
+  const [emissionsData, setEmissionsData ] = useState(null);
 
   useEffect(() => {
     axios
-      .get(`https://quiet-gorge-03165-6c773fd38803.herokuapp.com/emissions/${id}`)
+      .get(
+        `https://quiet-gorge-03165-6c773fd38803.herokuapp.com/emissions/${id}`
+      )
       .then((res) => {
-        setSolar(res.data.emissions_Solar);
+        setEmissionsData(res.data);
       });
-  }, []);
+  }, [id]);
 
-  useEffect(() => {
-    axios
-      .get(`https://quiet-gorge-03165-6c773fd38803.herokuapp.com/emissions/${id}`)
-      .then((res) => {
-        setBiomass(res.data.emissions_Bioenergy);
-      });
-  }, []);
+  console.log(emissionsData)
 
-  useEffect(() => {
-    axios
-      .get(`https://quiet-gorge-03165-6c773fd38803.herokuapp.com/emissions/${id}`)
-      .then((res) => {
-        setHydro(res.data.emissions_Hydro);
-      });
-  }, []);
+  let tenDecimal = emissionsData ? parseFloat(emissionsData.emissions_Wind).toFixed(2) : null;
 
-  useEffect(() => {
-    axios
-      .get(`https://quiet-gorge-03165-6c773fd38803.herokuapp.com/emissions/${id}`)
-      .then((res) => {
-        setRenew(res.data.emissions_OtherRenewables);
-      });
-  }, []);
+  let nineDecimal = emissionsData ? parseFloat(emissionsData.emissions_Solar).toFixed(2) : null;
 
-  useEffect(() => {
-    axios
-      .get(`https://quiet-gorge-03165-6c773fd38803.herokuapp.com/emissions/${id}`)
-      .then((res) => {
-        setNuclear(res.data.emissions_Nuclear);
-      });
-  }, []);
+  let threeDecimal = emissionsData
+    ? parseFloat(emissionsData.emissions_Bioenergy).toFixed(2)
+    : null;
 
-  useEffect(() => {
-    axios
-      .get(`https://quiet-gorge-03165-6c773fd38803.herokuapp.com/emissions/${id}`)
-      .then((res) => {
-        setFossil(res.data.emissions_OtherFossil);
-      });
-  }, []);
+  let sixDecimal = emissionsData ? parseFloat(emissionsData.emissions_Hydro).toFixed(2) : null;
 
-  useEffect(() => {
-    axios
-      .get(`https://quiet-gorge-03165-6c773fd38803.herokuapp.com/emissions/${id}`)
-      .then((res) => {
-        setGas(res.data.emissions_Gas);
-      });
-  }, []);
+  let elevenDecimal = emissionsData
+    ? parseFloat(emissionsData.emissions_OtherRenewables).toFixed(2)
+    : null;
 
-  useEffect(() => {
-    axios
-      .get(`https://quiet-gorge-03165-6c773fd38803.herokuapp.com/emissions/${id}`)
-      .then((res) => {
-        setCoal(res.data.emissions_Coal);
-      });
-  }, []);
+  let sevenDecimal = emissionsData
+    ? parseFloat(emissionsData.emissions_Nuclear).toFixed(2)
+    : null;
+
+  let twelveDecimal = emissionsData
+    ? parseFloat(emissionsData.emissions_OtherFossil).toFixed(2)
+    : null;
+
+  let twoDecimal = emissionsData ? parseFloat(emissionsData.emissions_Gas).toFixed(2) : null;
+
+  let fourDecimal = emissionsData ? parseFloat(emissionsData.emissions_Coal).toFixed(2) : null;
 
   //GENERATION
 
-  useEffect(() => {
-    axios
-      .get(`https://quiet-gorge-03165-6c773fd38803.herokuapp.com/emissions/${id}`)
-      .then((res) => {
-        setWindGen(res.data.generation_Wind);
-      });
-  }, []);
+  let thirteenDecimal = emissionsData
+    ? parseFloat(emissionsData.generation_Wind).toFixed(2)
+    : null;
 
-  useEffect(() => {
-    axios
-      .get(`https://quiet-gorge-03165-6c773fd38803.herokuapp.com/emissions/${id}`)
-      .then((res) => {
-        setSolarGen(res.data.generation_Solar);
-      });
-  }, []);
+  let fourteenDecimal = emissionsData
+    ? parseFloat(emissionsData.generation_Solar).toFixed(2)
+    : null;
 
-  useEffect(() => {
-    axios
-      .get(`https://quiet-gorge-03165-6c773fd38803.herokuapp.com/emissions/${id}`)
-      .then((res) => {
-        setBioenergyGen(res.data.generation_Bioenergy);
-      });
-  }, []);
+  let fifteenDecimal = emissionsData
+    ? parseFloat(emissionsData.generation_Bioenergy).toFixed(2)
+    : null;
 
-  useEffect(() => {
-    axios
-      .get(`https://quiet-gorge-03165-6c773fd38803.herokuapp.com/emissions/${id}`)
-      .then((res) => {
-        setHydroGen(res.data.generation_Hydro);
-      });
-  }, []);
+  let sixteenDecimal = emissionsData
+    ? parseFloat(emissionsData.generation_Hydro).toFixed(2)
+    : null;
 
-  useEffect(() => {
-    axios
-      .get(`https://quiet-gorge-03165-6c773fd38803.herokuapp.com/emissions/${id}`)
-      .then((res) => {
-        setOtherRenewablesGen(res.data.generation_OtherRenewables);
-      });
-  }, []);
+  let seventeenDecimal = emissionsData
+    ? parseFloat(emissionsData.generation_Renew).toFixed(2)
+    : null;
 
-  useEffect(() => {
-    axios
-      .get(`https://quiet-gorge-03165-6c773fd38803.herokuapp.com/emissions/${id}`)
-      .then((res) => {
-        setNuclearGen(res.data.generation_Nuclear);
-      });
-  }, []);
+  let eighteenDecimal = emissionsData
+    ? parseFloat(emissionsData.generation_Nuclear).toFixed(2)
+    : null;
 
-  useEffect(() => {
-    axios
-      .get(`https://quiet-gorge-03165-6c773fd38803.herokuapp.com/emissions/${id}`)
-      .then((res) => {
-        setOtherFossilGen(res.data.generation_OtherFossil);
-      });
-  }, []);
+  let ninteenDecimal = emissionsData
+    ? parseFloat(emissionsData.generation_OtherFossil).toFixed(2)
+    : null;
 
-  useEffect(() => {
-    axios
-      .get(`https://quiet-gorge-03165-6c773fd38803.herokuapp.com/emissions/${id}`)
-      .then((res) => {
-        setGasGen(res.data.generation_Gas);
-      });
-  }, []);
+  let twentyDecimal = emissionsData ? parseFloat(emissionsData.generation_Gas).toFixed(2) : null;
 
-  useEffect(() => {
-    axios
-      .get(`https://quiet-gorge-03165-6c773fd38803.herokuapp.com/emissions/${id}`)
-      .then((res) => {
-        setCoalGen(res.data.generation_Coal);
-      });
-  }, []);
-
-  let tenDecimal = parseFloat(wind).toFixed(2);
-
-  let nineDecimal = parseFloat(solar).toFixed(2);
-
-  let threeDecimal = parseFloat(biomass).toFixed(2);
-
-  let sixDecimal = parseFloat(hydro).toFixed(2);
-
-  let elevenDecimal = parseFloat(renew).toFixed(2);
-
-  let sevenDecimal = parseFloat(nuclear).toFixed(2);
-
-  let twelveDecimal = parseFloat(fossil).toFixed(2);
-
-  let twoDecimal = parseFloat(gas).toFixed(2);
-
-  let fourDecimal = parseFloat(coal).toFixed(2);
-
-  //GENERATION
-
-  let thirteenDecimal = parseFloat(wind2).toFixed(2);
-
-  let fourteenDecimal = parseFloat(solar2).toFixed(2);
-
-  let fifteenDecimal = parseFloat(biomass2).toFixed(2);
-
-  let sixteenDecimal = parseFloat(hydro2).toFixed(2);
-
-  let seventeenDecimal = parseFloat(renew2).toFixed(2);
-
-  let eighteenDecimal = parseFloat(nuclear2).toFixed(2);
-
-  let ninteenDecimal = parseFloat(fossil2).toFixed(2);
-
-  let twentyDecimal = parseFloat(gas2).toFixed(2);
-
-  let twentyoneDecimal = parseFloat(coal2).toFixed(2);
-
-  //RATIOS
+  let twentyoneDecimal = emissionsData
+    ? parseFloat(emissionsData.generation_Coal).toFixed(2)
+    : null;
 
   let windRatio = (thirteenDecimal / tenDecimal).toFixed(2);
 
@@ -230,7 +99,17 @@ const Ratio = () => {
 
   let coalRatio = (twentyoneDecimal / fourDecimal).toFixed(2);
 
-console.log(coalRatio)
+  let energyForms = {
+    Wind: windRatio,
+    Solar: solarRatio,
+    Biomass: bioRatio,
+    Hydro: hydroRatio,
+    "Other Renewables": renewRatio,
+    Nuclear: nuclearRatio,
+    "Other Fossil Fuels": fossilRatio,
+    "Natural Gas": gasRatio,
+    Coal: coalRatio,
+  };
 
   return (
     <div>
@@ -258,163 +137,20 @@ console.log(coalRatio)
       </div>
       <div className="emissions">
         <h1>{name}</h1>
-        Terwatt hours per megatonne of Carbon Dioxide Equivalent
-        {/* Wind */}
         <div>
-          <div>
-            {wind !== null ? (
-              <div>
-                <div>
-                  <p className="eList">
-                    {" "}
-                    Wind: <br></br>
-                    {windRatio}
-                  </p>{" "}
-                </div>
-              </div>
-            ) : (
-              <p className="eList">No data on Wind in {name}</p>
-            )}
-          </div>
-        </div>
-        {/* Solar */}
-        <div>
-          <div>
-            {solar !== null ? (
-              <div>
-                <div>
-                  <p className="eList">
-                    {" "}
-                    Solar: <br></br>
-                    {solarRatio}
-                  </p>{" "}
-                </div>
-              </div>
-            ) : (
-              <p className="eList">No data on Solar in {name}</p>
-            )}
-          </div>
-        </div>
-        {/* Biomass */}
-        <div>
-          <div>
-            {biomass !== null ? (
-              <div>
-                <div>
-                  <p className="eList">
-                    Bioenergy: <br></br>
-                    {bioRatio}
-                  </p>
-                </div>
-              </div>
-            ) : (
-              <p className="eList">No data on Bioenergy in {name}</p>
-            )}
-          </div>
-        </div>
-        {/* Hydro */}
-        <div>
-          <div>
-            {hydro !== null ? (
-              <div>
-                <div>
-                  <p className="eList">
-                    {" "}
-                    Hydro:<br></br> {hydroRatio}
-                  </p>{" "}
-                </div>
-              </div>
-            ) : (
-              <p className="eList">No data on Hydro in {name}</p>
-            )}
-          </div>
-        </div>
-        {/* Other Renewables */}
-        <div>
-          <div>
-            {renew !== null ? (
-              <div>
-                <div>
-                  <p className="eList">
-                    {" "}
-                    Other Renewables:<br></br> {renewRatio}
-                  </p>{" "}
-                </div>
-              </div>
-            ) : (
-              <p className="eList">No data on Other Renewables in {name}</p>
-            )}
-          </div>
-        </div>
-        {/* NUCLEAR */}
-        <div>
-          <div>
-            {nuclear !== null ? (
-              <div>
-                <div>
-                  <p className="eList">
-                    {" "}
-                    Nuclear: <br></br>
-                    {nuclearRatio}
-                  </p>{" "}
-                </div>
-              </div>
-            ) : (
-              <p className="eList">No emissions data on Nuclear in {name}</p>
-            )}
-          </div>
-        </div>
-        {/* Other Fossil Fuels */}
-        <div>
-          <div>
-            {fossil !== null ? (
-              <div>
-                <div>
-                  <p className="eList">
-                    {" "}
-                    Other Fossil Fuels: <br></br>
-                    {fossilRatio}
-                  </p>{" "}
-                </div>
-              </div>
-            ) : (
-              <p className="eList">
-                No emissions data on Other Fossil Fuels in {name}
-              </p>
-            )}
-          </div>
-        </div>
-        {/* Natual Gas */}
-        <div>
-          {gas !== null ? (
-            <div>
-              <div>
+          {Object.entries(energyForms).map(([key, value]) => (
+            <div key={key}>
+              {isNaN(value) ? (
                 <p className="eList">
-                  Natural Gas: <br></br>
-                  {gasRatio}
+                  There is not enough data for {key} in {name} to create a ratio
                 </p>
-              </div>
+              ) : (
+                <p className="eList">
+                  {key}: <br /> {value} Terawatt hours per year
+                </p>
+              )}
             </div>
-          ) : (
-            <p className="eList">No data on Gas in {name}</p>
-          )}
-        </div>
-        {/* Coal */}
-        <div>
-          <div>
-            {coal !== null ? (
-              <div>
-                <div>
-                  <p className="eList">
-                    {" "}
-                    Coal:<br></br> {coalRatio}
-                  </p>{" "}
-                </div>
-              </div>
-            ) : (
-              <p className="eList">No data on Coal in {name}</p>
-            )}
-          </div>
+          ))}
         </div>
       </div>
     </div>
