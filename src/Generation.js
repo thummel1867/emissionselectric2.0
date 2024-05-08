@@ -5,107 +5,68 @@ import GenerationGraph from "./GenerationGraph";
 
 const Generation = () => {
   const { id, name } = useParams();
-  const [gas, setGas] = useState();
-  const [biomass, setBioenergy] = useState();
-  const [coal, setCoal] = useState();
 
-  const [hydro, setHydro] = useState();
-  const [nuclear, setNuclear] = useState();
-
-  const [solar, setSolar] = useState();
-  const [wind, setWind] = useState();
-  const [renew, setOtherRenewables] = useState();
-  const [fossil, setOtherFossil] = useState();
+  const [generationData, setGenerationData] = useState();
 
   useEffect(() => {
     axios
-      .get(`https://quiet-gorge-03165-6c773fd38803.herokuapp.com/emissions/${id}`)
+      .get(
+        `https://quiet-gorge-03165-6c773fd38803.herokuapp.com/emissions/${id}`
+      )
       .then((res) => {
-        setWind(res.data.generation_Wind);
-      })
-  }, []);
-
-  useEffect(() => {
-    axios
-      .get(`https://quiet-gorge-03165-6c773fd38803.herokuapp.com/emissions/${id}`)
-      .then((res) => {
-        setSolar(res.data.generation_Solar);
+        setGenerationData(res.data);
       });
-  }, []);
+  }, [id]);
 
-  useEffect(() => {
-    axios
-      .get(`https://quiet-gorge-03165-6c773fd38803.herokuapp.com/emissions/${id}`)
-      .then((res) => {
-        setBioenergy(res.data.generation_Bioenergy);
-      });
-  }, []);
+  console.log(generationData);
 
-  useEffect(() => {
-    axios
-      .get(`https://quiet-gorge-03165-6c773fd38803.herokuapp.com/emissions/${id}`)
-      .then((res) => {
-        setHydro(res.data.generation_Hydro);
-      });
-  }, []);
+  let wind = generationData
+    ? parseFloat(generationData.generation_Wind).toFixed(2)
+    : null;
 
-  useEffect(() => {
-    axios
-      .get(`https://quiet-gorge-03165-6c773fd38803.herokuapp.com/emissions/${id}`)
-      .then((res) => {
-        setOtherRenewables(res.data.generation_OtherRenewables);
-      });
-  }, []);
+  let solar = generationData
+    ? parseFloat(generationData.generation_Solar).toFixed(2)
+    : null;
 
-  useEffect(() => {
-    axios
-      .get(`https://quiet-gorge-03165-6c773fd38803.herokuapp.com/emissions/${id}`)
-      .then((res) => {
-        setNuclear(res.data.generation_Nuclear);
-      });
-  }, []);
+  let biomass = generationData
+    ? parseFloat(generationData.generation_Bioenergy).toFixed(2)
+    : null;
 
-  useEffect(() => {
-    axios
-      .get(`https://quiet-gorge-03165-6c773fd38803.herokuapp.com/emissions/${id}`)
-      .then((res) => {
-        setOtherFossil(res.data.generation_OtherFossil);
-      });
-  }, []);
+  let hydro = generationData
+    ? parseFloat(generationData.generation_Hydro).toFixed(2)
+    : null;
 
-  useEffect(() => {
-    axios
-      .get(`https://quiet-gorge-03165-6c773fd38803.herokuapp.com/emissions/${id}`)
-      .then((res) => {
-        setGas(res.data.generation_Gas);
-      });
-  }, []);
+  let renewables = generationData
+    ? parseFloat(generationData.generation_OtherRenewables).toFixed(2)
+    : null;
 
-  useEffect(() => {
-    axios
-      .get(`https://quiet-gorge-03165-6c773fd38803.herokuapp.com/emissions/${id}`)
-      .then((res) => {
-        setCoal(res.data.generation_Coal);
-      });
-  }, []);
+  let nuclear = generationData
+    ? parseFloat(generationData.generation_Nuclear).toFixed(2)
+    : null;
 
-  let tenDecimal = parseFloat(wind).toFixed(2);
+  let fossil = generationData
+    ? parseFloat(generationData.generation_OtherFossil).toFixed(2)
+    : null;
 
-  let nineDecimal = parseFloat(solar).toFixed(2);
+  let gas = generationData
+    ? parseFloat(generationData.generation_Gas).toFixed(2)
+    : null;
 
-  let threeDecimal = parseFloat(biomass).toFixed(2);
+  let coal = generationData
+    ? parseFloat(generationData.generation_Coal).toFixed(2)
+    : null;
 
-  let sixDecimal = parseFloat(hydro).toFixed(2);
-
-  let elevenDecimal = parseFloat(renew).toFixed(2);
-
-  let sevenDecimal = parseFloat(nuclear).toFixed(2);
-
-  let twelveDecimal = parseFloat(fossil).toFixed(2);
-
-  let twoDecimal = parseFloat(gas).toFixed(2);
-
-  let fourDecimal = parseFloat(coal).toFixed(2);
+  let energyForms = {
+    Wind: wind,
+    Solar: solar,
+    Biomass: biomass,
+    Hydro: hydro,
+    "Other Renewables": renewables,
+    Nuclear: nuclear,
+    "Other Fossil Fuels": fossil,
+    "Natural Gas": gas,
+    Coal: coal,
+  };
 
   return (
     <div>
@@ -120,190 +81,33 @@ const Generation = () => {
       </div>
       <div className="graph">
         <GenerationGraph
-          twoDecimal={twoDecimal}
-          threeDecimal={threeDecimal}
-          fourDecimal={fourDecimal}
-          elevenDecimal={elevenDecimal}
-          sixDecimal={sixDecimal}
-          sevenDecimal={sevenDecimal}
-          twelveDecimal={twelveDecimal}
-          nineDecimal={nineDecimal}
-          tenDecimal={tenDecimal}
+          twoDecimal={gas}
+          threeDecimal={biomass}
+          fourDecimal={coal}
+          elevenDecimal={renewables}
+          sixDecimal={hydro}
+          sevenDecimal={nuclear}
+          twelveDecimal={fossil}
+          nineDecimal={solar}
+          tenDecimal={wind}
         />
       </div>
       <div className="emissions">
         <h1>{name}</h1>
-        {/* Wind */}
         <div>
-          <div>
-            {wind !== null ? (
-              <div>
-                <div>
-                  <p className="eList">
-                    {" "}
-                    Wind: <br></br>
-                    {tenDecimal} Terwatt hours per year
-                  </p>{" "}
-                </div>
-              </div>
-            ) : (
-              <p className="eList">
-                There is no emissions data on Wind in {name}
-              </p>
-            )}
-          </div>
-        </div>
-        {/* Solar */}
-        <div>
-          <div>
-            {solar !== null ? (
-              <div>
-                <div>
-                  <p className="eList">
-                    {" "}
-                    Solarvoltaic: <br></br>
-                    {nineDecimal} Terawatt hours per year
-                  </p>{" "}
-                </div>
-              </div>
-            ) : (
-              <p className="eList">
-                There is no emissions data on Solar in {name}
-              </p>
-            )}
-          </div>
-        </div>
-        {/* Biomass */}
-        <div>
-          <div>
-            {biomass !== null ? (
-              <div>
-                <div>
-                  <p className="eList">
-                    Biomass: <br></br>
-                    {threeDecimal} Terawatt hours per year
-                  </p>
-                </div>
-              </div>
-            ) : (
-              <p className="eList">
-                There is no emissions data on Biomass in {name}
-              </p>
-            )}
-          </div>
-        </div>
-        {/* Hydro */}
-        <div>
-          <div>
-            {hydro !== null ? (
-              <div>
-                <div>
-                  <p className="eList">
-                    {" "}
-                    Hydro:<br></br> {sixDecimal} Terawatt hours per year
-                  </p>{" "}
-                </div>
-              </div>
-            ) : (
-              <p className="eList">
-                There is no emissions data on Hydro in {name}
-              </p>
-            )}
-          </div>
-        </div>
-        {/* Other Renewables */}
-        <div>
-          <div>
-            {renew !== null ? (
-              <div>
-                <div>
-                  <p className="eList">
-                    {" "}
-                    Other Renewables:<br></br> {elevenDecimal} Terawatt hours
-                    per year
-                  </p>{" "}
-                </div>
-              </div>
-            ) : (
-              <p className="eList">
-                There is no emissions data on Other Renewables in {name}
-              </p>
-            )}
-          </div>
-        </div>
-        {/* NUCLEAR */}
-        <div>
-          <div>
-            {nuclear !== null ? (
-              <div>
-                <div>
-                  <p className="eList">
-                    {" "}
-                    Nuclear: <br></br>
-                    {sevenDecimal} Terawatt hours per year
-                  </p>{" "}
-                </div>
-              </div>
-            ) : (
-              <p className="eList">
-                There is no emissions data on Nuclear in {name}
-              </p>
-            )}
-          </div>
-        </div>
-        {/* Other Fossil Fuels */}
-        <div>
-          <div>
-            {fossil !== null ? (
-              <div>
-                <div>
-                  <p className="eList">
-                    {" "}
-                    Other Fossil Fuels: <br></br>
-                    {twelveDecimal} Terawatt hours per year
-                  </p>{" "}
-                </div>
-              </div>
-            ) : (
-              <p className="eList">
-                There is no emissions data on Other Fossil Fuels in {name}
-              </p>
-            )}
-          </div>
-        </div>
-        {/* Natual Gas */}
-        <div>
-          {gas !== null ? (
-            <div>
-              <div>
+          {Object.entries(energyForms).map(([key, value]) => (
+            <div key={key}>
+              {isNaN(value) ? (
                 <p className="eList">
-                  Natural Gas: <br></br>
-                  {twoDecimal} Terawatt hours per year{" "}
+                  There is no generation data on {key} in {name}
                 </p>
-              </div>
+              ) : (
+                <p className="eList">
+                  {key}: <br /> {value} Terawatt hours per year
+                </p>
+              )}
             </div>
-          ) : (
-            <p className="eList">There is no emissions data on Gas in {name}</p>
-          )}
-        </div>
-        {/* Coal */}
-        <div>
-          <div>
-            {coal !== null ? (
-              <div>
-                <div>
-                  <p className="eList">
-                    {" "}
-                    Coal:<br></br> {fourDecimal} Terawatt hours per year
-                  </p>{" "}
-                </div>
-              </div>
-            ) : (
-              <p className="eList">
-                There is no emissions data on Coal in {name}
-              </p>
-            )}
-          </div>
+          ))}
         </div>
       </div>
     </div>
