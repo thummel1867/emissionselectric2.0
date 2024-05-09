@@ -7,7 +7,6 @@ import "./App.css";
 import About from "./About";
 import Generation from "./Generation";
 import Ratio from "./Ratio";
-import Map from "./Map";
 
 const App = () => {
   const [country, setCountry] = useState();
@@ -27,7 +26,6 @@ const App = () => {
           <h1>Countries</h1>
         </Link>
       </nav>
-      {<Map />}
       <main className="main">
         <Routes>
           <Route path="/" element={<Home />} />
