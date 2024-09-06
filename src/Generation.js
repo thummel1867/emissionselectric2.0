@@ -18,6 +18,7 @@ const Generation = () => {
       });
   }, [id]);
 
+
   console.log(generationData);
 
   let wind = generationData

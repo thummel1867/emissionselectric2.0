@@ -20,6 +20,9 @@ const Emissions = () => {
       });
   }, [id]);
 
+  https://quiet-gorge-03165-6c773fd38803.herokuapp.com/emissions
+
+
   console.log(emissionData);
 
   let wind = emissionData
